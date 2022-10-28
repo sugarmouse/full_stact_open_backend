@@ -9,6 +9,10 @@ const requestLogger = (request, response, next) => {
   next()
 }
 
+const unknownEndpoint = (request, response) => {  
+  response.status(404).send({ error: 'unknown endpoint' })
+}
+
 const app = express()
 
 app.use(express.json())
@@ -86,6 +90,8 @@ app.post('/api/notes', (request, response) => {
   notes = notes.concat(note)
   response.json(note)
 })
+
+app.use(unknownEndpoint)
 
 const PORT = 3001
 app.listen(PORT, () => {
