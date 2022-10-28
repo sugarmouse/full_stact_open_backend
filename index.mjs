@@ -1,5 +1,6 @@
 import { createServer } from 'http'
 import express from 'express'
+import { type } from 'os'
 
 const app = express()
 
@@ -24,15 +25,22 @@ let notes = [
   }
 ]
 
-app.get('/',(request, response)=>{
+app.get('/', (request, response) => {
   response.send('<h1>Hello World!</h1>')
 })
 
-app.get('/api/notes/', (request, response)=>{
-  response.json(notes)
+app.get('/api/notes/:id', (request, response) => {
+  const id = Number(request.params.id)
+  const note = notes.find(note => note.id === id)
+
+  if (note) {
+    response.json(note)
+  } else {
+    response.status(404).end()
+  }
 })
 
 const PORT = 3001
-app.listen(PORT, ()=>{
-  console.log(`Server running on port ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
 })
