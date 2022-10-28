@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node index.mjs",
+    "build":"node index.mjs",
     "dev": "nodemon index.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
