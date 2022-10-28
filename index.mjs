@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 
 // A self-defined middleware function that logs the request method, path and body.
 const requestLogger = (request, response, next) => {
@@ -15,6 +16,7 @@ const unknownEndpoint = (request, response) => {
 
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 app.use(requestLogger)
 

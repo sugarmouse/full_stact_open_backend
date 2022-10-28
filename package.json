@@ -6,13 +6,14 @@
   "type": "module",
   "scripts": {
     "start": "node index.mjs",
-    "dev":"nodemon index.mjs",
+    "dev": "nodemon index.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "tangHao",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2"
   },
   "devDependencies": {
